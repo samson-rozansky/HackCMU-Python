@@ -15,6 +15,10 @@
   </tr>
 </table>
 
+<h3>Your Email</h3>
+<p><strong>Subject:</strong> {{ attempt.email_subject or '—' }}</p>
+<pre class="scenario">{{ attempt.email_body }}</pre>
+
 {% if attempt.rubric_text %}
 <h3>Rubric</h3>
 <pre class="scenario">{{ attempt.rubric_text }}</pre>

@@ -13,6 +13,11 @@
   {% endfor %}
 </ul>
 
+{% if scenario.rubric_text %}
+<h3>Rubric</h3>
+<pre class="scenario">{{ scenario.rubric_text }}</pre>
+{% endif %}
+
 <p>
   <a class="btn" href="/attempt/new?scenario_id={{ scenario.id }}">Compose Response</a>
 </p>

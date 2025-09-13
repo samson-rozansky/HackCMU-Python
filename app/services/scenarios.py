@@ -16,6 +16,7 @@ def create_scenario(difficulty: str = "beginner", category: str = "academic", fo
         difficulty=difficulty,
         category=category,
         success_criteria=json.dumps(data.get("success_criteria", [])),
+        rubric_text=data.get("rubric_text", ""),
     )
     db.session.add(scenario)
     db.session.commit()

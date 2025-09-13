@@ -13,6 +13,7 @@ class Config:
     # LLM settings
     OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
     LLM_MODEL_NAME = os.environ.get("LLM_MODEL_NAME", "llama3.1")
+    OLLAMA_SMALL_MODEL = os.environ.get("OLLAMA_SMALL_MODEL", "llama3.2:3b")
 
     # Default rubric weights
     RUBRIC_WEIGHTS = {

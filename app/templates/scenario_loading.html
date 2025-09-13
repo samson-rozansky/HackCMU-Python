@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Generating Scenario…</h1>
+<div class="loader-card">
+  <div class="spinner"></div>
+  <p>We’re generating a detailed scenario and rubric. This can take ~10s.</p>
+</div>
+<script>
+  (async () => {
+    const params = new URLSearchParams(window.location.search);
+    const difficulty = params.get('difficulty') || 'beginner';
+    const category = params.get('category') || 'academic';
+    const focus = params.get('focus') || 'clarity';
+    try {
+      const res = await fetch(`/scenario/generate?difficulty=${encodeURIComponent(difficulty)}&category=${encodeURIComponent(category)}&focus=${encodeURIComponent(focus)}`, { method: 'POST' });
+      const data = await res.json();
+      if (data && data.id) {
+        window.location.href = `/scenario/${data.id}`;
+      } else {
+        window.location.href = `/scenario/new`;
+      }
+    } catch (e) {
+      window.location.href = `/scenario/new`;
+    }
+  })();
+</script>
+{% endblock %}

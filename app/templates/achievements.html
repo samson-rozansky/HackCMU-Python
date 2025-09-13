@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Achievements</h1>
+<div class="badge-grid">
+  {% for b in badges %}
+  <div class="badge {% if b.unlocked == 'false' %}locked{% endif %}">
+    <div class="badge-icon">{% if b.unlocked == 'false' %}🔒{% else %}🏆{% endif %}</div>
+    <div class="badge-body">
+      <div class="badge-title">{{ b.name }}</div>
+      <div class="badge-desc">{{ b.desc }}</div>
+    </div>
+  </div>
+  {% else %}
+  <p>No achievements yet. Start a scenario to earn some!</p>
+  {% endfor %}
+</div>
+{% endblock %}

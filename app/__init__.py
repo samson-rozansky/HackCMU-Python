@@ -42,6 +42,13 @@ def create_app(config_class: Optional[type] = None) -> Flask:
         from .services.settings import load_settings_into_config
         load_settings_into_config()
 
+        # Autodetect models and prefer gemma3:1b if available
+        try:
+            from .services.ollama import autodetect_and_apply_model_preference
+            autodetect_and_apply_model_preference()
+        except Exception:
+            pass
+
         from .blueprints.main import main_bp
         from .blueprints.scenarios import scenarios_bp
         from .blueprints.exports import exports_bp

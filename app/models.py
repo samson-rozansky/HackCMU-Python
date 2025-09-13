@@ -12,6 +12,7 @@ class Scenario(db.Model):
     difficulty = db.Column(db.String(32))  # 'beginner'|'intermediate'|'advanced'
     category = db.Column(db.String(64))  # business/academic/personal
     success_criteria = db.Column(db.Text)  # JSON string list
+    rubric_text = db.Column(db.Text)  # rubric/guidelines for this scenario
     generated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     attempts = db.relationship("Attempt", backref="scenario", lazy=True)

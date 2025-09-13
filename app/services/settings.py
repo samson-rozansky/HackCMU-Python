@@ -17,6 +17,8 @@ def load_settings_into_config() -> None:
                 pass
         elif row.key == 'LLM_MODEL_NAME':
             current_app.config['LLM_MODEL_NAME'] = row.value
+        elif row.key == 'OLLAMA_BASE_URL':
+            current_app.config['OLLAMA_BASE_URL'] = row.value
 
 
 def get_setting(key: str, default: Optional[Any] = None) -> Any:
@@ -49,3 +51,5 @@ def set_setting(key: str, value: Any) -> None:
         current_app.config['RUBRIC_WEIGHTS'] = value
     elif key == 'LLM_MODEL_NAME':
         current_app.config['LLM_MODEL_NAME'] = value
+    elif key == 'OLLAMA_BASE_URL':
+        current_app.config['OLLAMA_BASE_URL'] = value
