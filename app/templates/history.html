@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>History</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Scenario</th>
+      <th>Total</th>
+      <th>Submitted</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in attempts %}
+    <tr>
+      <td>{{ a.id }}</td>
+      <td>{{ a.scenario_id }}</td>
+      <td>{{ a.score_total or 0 }}</td>
+      <td>{{ a.submitted_at.strftime('%Y-%m-%d %H:%M') if a.submitted_at }}</td>
+      <td><a href="/result/{{ a.id }}">View</a></td>
+    </tr>
+    {% else %}
+    <tr><td colspan="5">No attempts yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

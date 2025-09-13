@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Email Game</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="/" style="margin-right:auto;">📧 Email Game</a>
+      <a href="/scenario/new">New Scenario</a>
+      <a href="/history">History</a>
+      <a href="/analytics">Analytics</a>
+      <a href="/settings">Settings</a>
+      <a href="/export/csv" class="btn secondary" style="margin-left:12px;">Export</a>
+    </nav>
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

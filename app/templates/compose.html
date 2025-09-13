@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Compose Email</h1>
+<div class="compose-grid">
+  <aside class="context-card">
+    <h3>Context</h3>
+    <p><strong>{{ scenario.character_name }}</strong> — {{ scenario.character_role or 'Contact' }}</p>
+    <p><em>Difficulty:</em> {{ scenario.difficulty or 'beginner' }} | <em>Category:</em> {{ scenario.category or 'business' }}</p>
+    <pre class="scenario">{{ scenario.scenario_text }}</pre>
+    <h4>Success Criteria</h4>
+    <ul>
+      {% for s in success_criteria %}
+      <li>{{ s }}</li>
+      {% endfor %}
+    </ul>
+  </aside>
+
+  <section class="compose-card">
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        {{ form.email_subject.label }}
+        {{ form.email_subject(size=80) }}
+      </div>
+      <div class="form-group">
+        {{ form.email_body.label }}
+        {{ form.email_body(rows=18, cols=100) }}
+      </div>
+      <div class="actions">
+        {{ form.submit(class_="btn primary") }}
+      </div>
+    </form>
+  </section>
+</div>
+{% endblock %}

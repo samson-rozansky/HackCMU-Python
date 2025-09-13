@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Scenario #{{ scenario.id }}</h1>
+<p><strong>{{ scenario.character_name }}</strong> — {{ scenario.character_role or 'Contact' }}</p>
+<p><em>Difficulty:</em> {{ scenario.difficulty or 'beginner' }} | <em>Category:</em> {{ scenario.category or 'business' }}</p>
+
+<pre class="scenario">{{ scenario.scenario_text }}</pre>
+
+<h3>Success Criteria</h3>
+<ul>
+  {% for s in success_criteria %}
+  <li>{{ s }}</li>
+  {% endfor %}
+</ul>
+
+<p>
+  <a class="btn" href="/attempt/new?scenario_id={{ scenario.id }}">Compose Response</a>
+</p>
+{% endblock %}

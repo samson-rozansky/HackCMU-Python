@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Result</h1>
+<p><strong>Total:</strong> {{ attempt.score_total }}/100</p>
+<table class="table">
+  <tr>
+    <th>Clarity</th><td>{{ attempt.score_clarity or 0 }}</td>
+    <th>Conciseness</th><td>{{ attempt.score_conciseness or 0 }}</td>
+    <th>Tone</th><td>{{ attempt.score_tone or 0 }}</td>
+  </tr>
+  <tr>
+    <th>Grammar</th><td>{{ attempt.score_grammar or 0 }}</td>
+    <th>Completeness</th><td>{{ attempt.score_completeness or 0 }}</td>
+    <th>Politeness</th><td>{{ attempt.score_politeness or 0 }}</td>
+  </tr>
+</table>
+
+{% if attempt.rubric_text %}
+<h3>Rubric</h3>
+<pre class="scenario">{{ attempt.rubric_text }}</pre>
+{% endif %}
+
+<h3>Feedback</h3>
+<p>{{ attempt.feedback or '—' }}</p>
+
+<h3>Suggestions</h3>
+<ul>
+  {% for s in suggestions %}
+  <li>{{ s }}</li>
+  {% else %}
+  <li>—</li>
+  {% endfor %}
+</ul>
+
+<p>
+  <a class="btn" href="/attempt/new?scenario_id={{ attempt.scenario_id }}">Try Again</a>
+  <a class="btn" href="/scenario/new">Next Scenario</a>
+  <a class="btn" href="/history">View History</a>
+</p>
+{% endblock %}

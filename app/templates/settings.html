@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Settings</h1>
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <div class="form-group">
+    {{ form.llm_model_name.label }}
+    {{ form.llm_model_name(size=40) }}
+  </div>
+  <fieldset>
+    <legend>Rubric Weights (0–1)</legend>
+    <div class="form-group">{{ form.weight_clarity.label }} {{ form.weight_clarity(step=0.01) }}</div>
+    <div class="form-group">{{ form.weight_conciseness.label }} {{ form.weight_conciseness(step=0.01) }}</div>
+    <div class="form-group">{{ form.weight_tone.label }} {{ form.weight_tone(step=0.01) }}</div>
+    <div class="form-group">{{ form.weight_grammar.label }} {{ form.weight_grammar(step=0.01) }}</div>
+    <div class="form-group">{{ form.weight_completeness.label }} {{ form.weight_completeness(step=0.01) }}</div>
+    <div class="form-group">{{ form.weight_politeness.label }} {{ form.weight_politeness(step=0.01) }}</div>
+  </fieldset>
+  <div class="actions">{{ form.submit(class_="btn") }}</div>
+</form>
+{% endblock %}
